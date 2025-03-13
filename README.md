@@ -1,54 +1,53 @@
-# React + TypeScript + Vite
+# HTML Tag Cleaner
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple React application that allows you to clean HTML by removing all attributes from tags while preserving the tag structure and content.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Paste HTML with attributes in the left text area
+- Click "Clean HTML" button to process the input
+- View the cleaned HTML (with all attributes removed) in the right text area
+- Copy the cleaned HTML to your clipboard with one click
+- Load an example to see how it works
 
-## Expanding the ESLint configuration
+## Example
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Input:**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```html
+<h1 data-start="74" data-end="140">
+  <strong data-start="76" data-end="140"
+    >Discovering Toronto: A Vibrant City of Diversity and Culture</strong
+  >
+</h1>
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Output:**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```html
+<h1>
+  <strong>Discovering Toronto: A Vibrant City of Diversity and Culture</strong>
+</h1>
 ```
+
+## How It Works
+
+The application uses the DOM API to parse the input HTML, create new elements without attributes, and transfer the content. This approach handles nested tags correctly, preserving the structure of your HTML while removing all attributes.
+
+## Getting Started
+
+1. Clone this repository
+2. Install dependencies with `npm install`
+3. Start the development server with `npm run dev`
+4. Open your browser to the URL shown in the terminal (typically http://localhost:5173/)
+
+## Technologies Used
+
+- React
+- TypeScript
+- Vite
+- HTML DOM Parser API
+
+## License
+
+MIT
